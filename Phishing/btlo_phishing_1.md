@@ -1,6 +1,6 @@
-# Blue Team Labs Online (BTLO) - Phishing Analysis 🎣
+Phishing Analysis 
 
-![BTLO Badge](./images/Screenshot_2026-11-06_132328.jpg)
+<img width="1137" height="852" alt="Screenshot 2026-11-06 132328" src="https://github.com/user-attachments/assets/c8e58919-431c-4ce5-97ac-767343362fca" />
 
 ## 📖 Overview
 **Author:** Mohit Patil  
@@ -25,7 +25,7 @@ As a SOC Analyst, I was tasked with investigating a suspicious email reported by
 ### 1. Who is the primary recipient of this email?
 By analyzing the email headers, specifically the `To:` field, we can identify the intended target of this phishing attempt.
 *   **Answer:** `kinnar1975@yahoo.co.uk`
-*   *Reference: `Screenshot 2026-11-06 100047.png`*
+*   *Reference: <img width="843" height="133" alt="Screenshot 2026-11-06 100047" src="https://github.com/user-attachments/assets/b246b262-a307-4bae-ab05-eeb8757d9c35" />*
 
 ### 2. What is the subject of this email?
 Reviewing the `Subject:` header reveals how the attacker attempted to trick the user into opening the email by making it look like an administrative bounce-back message.
