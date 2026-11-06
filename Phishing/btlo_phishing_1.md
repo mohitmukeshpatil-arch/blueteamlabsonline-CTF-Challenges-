@@ -1,0 +1,74 @@
+# Blue Team Labs Online (BTLO) - Phishing Analysis 🎣
+
+![BTLO Badge](./images/Screenshot_2026-11-06_132328.jpg)
+
+## 📖 Overview
+**Author:** Mohit Patil  
+**Platform:** Blue Team Labs Online (BTLO)  
+**Challenge:** Phishing Analysis  
+**Category:** Security Operations (SO)  
+**Difficulty:** Easy  
+**Completed:** Nov 6, 2026
+
+## 🎯 Scenario
+As a SOC Analyst, I was tasked with investigating a suspicious email reported by a user. The objective of this lab is to perform static analysis on the provided email (.eml) file to extract key Indicators of Compromise (IOCs), understand the attacker's methodology, and identify the malicious payload or destination.
+
+## 🛠️ Tools Used
+*   Text Editor (for raw email header analysis)
+*   Email Client (for rendering the .eml file)
+*   OSINT Tools (URL2PNG, whois.domaintools.com)
+
+---
+
+## 🕵️‍♂️ Investigation & Walkthrough
+
+### 1. Who is the primary recipient of this email?
+By analyzing the email headers, specifically the `To:` field, we can identify the intended target of this phishing attempt.
+*   **Answer:** `kinnar1975@yahoo.co.uk`
+*   *Reference: `Screenshot 2026-11-06 100047.png`*
+
+### 2. What is the subject of this email?
+Reviewing the `Subject:` header reveals how the attacker attempted to trick the user into opening the email by making it look like an administrative bounce-back message.
+*   **Answer:** `Undeliverable: Website contact form submission`
+*   *Reference: `Screenshot 2026-11-06 100102.png`*
+
+### 3. What is the date and time the email was sent?
+Checking the `Sent:` header gives us the exact timestamp of the attack, which is crucial for timeline reconstruction in an incident response scenario.
+*   **Answer:** `18 March 2021 04:14`
+*   *Reference: `Screenshot 2026-11-06 100142.png`*
+
+### 4. What is the Originating IP?
+By tracing back through the `Received:` headers from bottom to top, we can find the IP address of the server that originally sent the email. 
+*   **Answer:** `103.9.171.10`
+*   *Reference: `Screenshot 2026-11-06 100658.png`*
+
+### 5. Perform reverse DNS on this IP address, what is the resolved host?
+Using `whois.domaintools.com` (or simply looking at the adjacent information in the `Received` header where the IP is enclosed in brackets), we can resolve the originating IP to its hostname.
+*   **Answer:** `c5s2-1e-syd.hosting-services.net.au`
+
+### 6. What is the name of the attached file?
+Opening the email in a client or reviewing the MIME boundaries in the raw text reveals an attached file meant to be opened by the victim.
+*   **Answer:** `Website contact form submission.eml`
+*   *Reference: `Screenshot 2026-11-06 102349.png`*
+
+### 7. What is the URL found inside the attachment?
+By inspecting the source code/HTML of the attached `.eml` file, we find an embedded hyperlink designed to direct the user to a malicious site promising "Good earnings".
+*   **Answer:** `https://35000usdperwwekpodf.blogspot.sg` 
+*   *Reference: `Screenshot 2026-11-06 101555.png` & `Screenshot 2026-11-06 103729.png`*
+
+### 8. What service is this webpage hosted on?
+Looking at the domain name of the extracted URL, we can identify the hosting provider abused by the attacker.
+*   **Answer:** `blogspot` (or Blogger)
+
+### 9. Using URL2PNG, what is the heading text on this page?
+Since navigating to potentially malicious infrastructure is dangerous (and the site might be taken down), utilizing a service like URL2PNG allows us to safely view what the site looked like. 
+*   **Answer:** `Blog has been removed`
+*   *Reference: `Screenshot 2026-11-06 104226.png`*
+
+---
+
+## 💡 Conclusion & Key Takeaways
+This challenge effectively demonstrated the core fundamentals of phishing email analysis. Key takeaways include:
+*   The importance of carefully dissecting email headers (`To`, `From`, `Subject`, `Date`, `Received`) to establish the baseline facts of the communication.
+*   How attackers utilize nested or attached `.eml` files to bypass basic spam filters and hide malicious URLs.
+*   The value of using safe, out-of-band OSINT tools (like URL2PNG) to investigate suspicious links without risking direct exposure to malicious infrastructure.
