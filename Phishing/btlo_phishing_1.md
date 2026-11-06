@@ -1,7 +1,5 @@
 Phishing Analysis 
 
-<img width="1137" height="852" alt="Screenshot 2026-11-06 132328" src="https://github.com/user-attachments/assets/c8e58919-431c-4ce5-97ac-767343362fca" />
-
 ## 📖 Overview
 **Author:** Mohit Patil  
 **Platform:** Blue Team Labs Online (BTLO)  
@@ -25,7 +23,8 @@ As a SOC Analyst, I was tasked with investigating a suspicious email reported by
 ### 1. Who is the primary recipient of this email?
 By analyzing the email headers, specifically the `To:` field, we can identify the intended target of this phishing attempt.
 *   **Answer:** `kinnar1975@yahoo.co.uk`
-*   *Reference: <img width="843" height="133" alt="Screenshot 2026-11-06 100047" src="https://github.com/user-attachments/assets/b246b262-a307-4bae-ab05-eeb8757d9c35" />*
+*   *Reference:
+    <img width="843" height="133" alt="Screenshot 2026-11-06 100047" src="https://github.com/user-attachments/assets/b246b262-a307-4bae-ab05-eeb8757d9c35" />*
 
 ### 2. What is the subject of this email?
 Reviewing the `Subject:` header reveals how the attacker attempted to trick the user into opening the email by making it look like an administrative bounce-back message.
@@ -72,3 +71,5 @@ This challenge effectively demonstrated the core fundamentals of phishing email 
 *   The importance of carefully dissecting email headers (`To`, `From`, `Subject`, `Date`, `Received`) to establish the baseline facts of the communication.
 *   How attackers utilize nested or attached `.eml` files to bypass basic spam filters and hide malicious URLs.
 *   The value of using safe, out-of-band OSINT tools (like URL2PNG) to investigate suspicious links without risking direct exposure to malicious infrastructure.
+
+<img width="1137" height="852" alt="Screenshot 2026-11-06 132328" src="https://github.com/user-attachments/assets/c8e58919-431c-4ce5-97ac-767343362fca" />
